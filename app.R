@@ -56,7 +56,7 @@ server <- function(input, output) {
 
       points = apply(samples, 1, sum)
 
-      output$range <- renderText(sprintf("The 90%% interval for your score is %.1f%% and %.1f%%.", quantile(points / sum(categories), 0.05) * 100, quantile(points / sum(categories), 0.95) * 100))
+      output$range <- renderText(sprintf("The 90%% interval for your score is %.1f%% to %.1f%%.", quantile(points / sum(categories), 0.05) * 100, quantile(points / sum(categories), 0.95) * 100))
 
       ggplot(data.frame(f=points / sum(categories) * 100), aes(f)) +
         geom_histogram(aes(y = ..density..), bins = 10) +
