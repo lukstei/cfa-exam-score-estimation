@@ -14,10 +14,10 @@ We assume a discrete uniform distribution for each topic (i.e. each topic score 
 
 ### How to run it locally
 
-1) Install RStudio and download the source code
-2) Open app.R
-3) Install the required packages (shiny, shinydashboard, ggplot2)
-4) Click 'Run app'
+1. Install RStudio and download the source code
+2. Open `app.R`
+3. Install the required packages (`shiny`, `shinydashboard`, `ggplot2`)
+4. Click 'Run app'
 
 ### Who
 

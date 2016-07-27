@@ -65,21 +65,19 @@ server <- function(input, output) {
   })
 }
 
-
+analytics = "<script>  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');  ga('create', 'UA-75337739-2', 'auto');  ga('send', 'pageview');</script>";
 ui <- dashboardPage(
   dashboardHeader(
     title = "CFA Exam Score Estimation"
   ),
   dashboardSidebar(disable = TRUE),
   dashboardBody(
-    tags$head(HTML("<script type='text/javascript' src='js/hoge.js'></script>")),
+    tags$head(HTML(analytics)),
     fluidRow(
       column(width = 7,
              box(width = NULL,
-                 p(
-                   class = "text-muted",
-                   paste("Note: This app is not affiliated with CFA Institute.")
-                 )
+                p(class = "text-muted", paste("Note: This App is not affiliated with CFA Institute.")),
+                a("Explanation + Source Code", href="https://github.com/lukstei/cfa-exam-score-estimation", target="_blank"), span(" - created by ", a("Lukas Steinbrecher", href="https://lukstei.com", target="_blank"))
              ),
              box(width = NULL, solidHeader = TRUE,
                  plotOutput("hist", height = 500)
@@ -87,7 +85,7 @@ ui <- dashboardPage(
              verbatimTextOutput("range")
       ),
       column(width = 5,
-             box(width = NULL, status = "warning",
+             box(width = NULL,
                  selectizeInput(
                    'exam', 'Exam', choices = names(exams)
                  ),
